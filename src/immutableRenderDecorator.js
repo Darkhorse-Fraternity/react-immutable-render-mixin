@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import shouldComponentUpdate from './shouldComponentUpdate';
-
+import hoistNonReactStatic from 'hoist-non-react-statics'
 /**
  * Makes the given component "pure".
  *
@@ -15,5 +15,5 @@ export default function immutableRenderDecorator(Target) {
 
   Wrapper.prototype.shouldComponentUpdate = shouldComponentUpdate;
 
-  return Wrapper;
+  return hoistNonReactStatic(Wrapper, Target);
 }
